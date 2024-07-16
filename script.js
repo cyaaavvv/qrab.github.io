@@ -9,17 +9,14 @@ const cartItems = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 
 let html5QrCode;
-let inventory = [];
 let cart = [];
 
-// Load inventory from JSON file
-fetch('inventory.json')
-    .then(response => response.json())
-    .then(data => {
-        inventory = data;
-        console.log('Inventory loaded:', inventory);
-    })
-    .catch(error => console.error('Error loading inventory:', error));
+// Inventory data directly in the script
+const inventory = [
+    {"id": "001", "name": "Item 1", "quantity": 10, "price": 9.99},
+    {"id": "002", "name": "Item 2", "quantity": 5, "price": 14.99},
+    {"id": "003", "name": "Item 3", "quantity": 8, "price": 19.99}
+];
 
 function onScanSuccess(decodedText, decodedResult) {
     console.log(`Code scanned = ${decodedText}`, decodedResult);
@@ -41,7 +38,7 @@ function onScanError(errorMessage) {
 
 function startScanner() {
     html5QrCode = new Html5Qrcode("reader");
-    const config = { fps: 10, qrbox: 250 };
+    const config = { fps: 10, qrbox: { width: 250, height: 250 } };
 
     html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess, onScanError)
         .then(() => {
@@ -74,11 +71,7 @@ function stopScanner() {
 function performSearch() {
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
-        if (inventoryCheck.checked) {
-            checkInventory(searchTerm);
-        } else {
-            window.open(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
-        }
+        checkInventory(searchTerm);
     }
 }
 
