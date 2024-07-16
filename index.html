@@ -7,27 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>QR Code Scanner and Inventory Manager</h1>
-    <div id="reader-container">
-        <div id="reader"></div>
-        <div id="scan-status">Waiting for QR Code...</div>
-    </div>
-    <div id="control-buttons">
-        <button id="stop-button">Stop Scanning</button>
-        <button id="start-button" style="display: none;">Start Scanning</button>
-    </div>
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Scanned content will appear here">
-        <button id="search-button">Search/Check</button>
-        <label for="inventory-check">
-            <input type="checkbox" id="inventory-check" checked> Check Inventory
-        </label>
-    </div>
-    <div id="result-container"></div>
-    <div id="cart-container">
-        <h2>Cart</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: $<span id="cart-total">0.00</span></p>
+    <div class="container">
+        <h1>QR Code Scanner and Inventory Manager</h1>
+        <div id="reader-container">
+            <div id="reader"></div>
+            <div id="scan-status">Waiting for QR Code...</div>
+        </div>
+        <div id="control-buttons">
+            <button id="stop-button">Stop Scanning</button>
+            <button id="start-button" style="display: none;">Start Scanning</button>
+        </div>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Scanned content will appear here">
+            <button id="search-button">Search/Check</button>
+        </div>
+        <div id="result-container"></div>
+        <div id="cart-container">
+            <h2>Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="cart-total">0.00</span></p>
+        </div>
     </div>
 
     <script src="https://unpkg.com/html5-qrcode"></script>
